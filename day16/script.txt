@@ -1,0 +1,16 @@
+docker run -d \
+  --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD=mysecretpassword \
+  -p 3306:3306 \
+  mysql:latest
+
+
+
+docker exec 08dc34197967 /usr/bin/mysqldump -u root --password=mysecretpassword mydb > dump.sql
+
+
+mysql -h mydbforfancynumber.mysql.database.azure.com -u myuse -p mydb < dump
+
+
+mysql -h mydbforfancynumber.mysql.database.azure.com -u myuser@mydbforfancynumber -p mydb < /home/chenjie/dump.sql
+
