@@ -86,4 +86,6 @@ urlpatterns = [
     # 城市列表
     path('city/list/', city.city_list),
     path('city/add/', city.city_add),
+
+    path('', admin.admin_list, name='home'),
 ]

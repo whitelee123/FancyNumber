@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hkrj5qe6)4-oe)g&+s-_)90r8$$fk_*a1w33=2wikt4!^4_h6c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','myfancynumberwebapp.azurewebsites.net']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','testforfancynum.azurewebsites.net']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,14 +81,52 @@ WSGI_APPLICATION = 'day16.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.environ.get('DB_NAME'),
+    #     'USER': os.environ.get('DB_USER'),
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'),
+    #     'HOST': os.environ.get('DB_HOST'),
+    #     'PORT': '3306',
+    # }
+
+    #  'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mydb',
+    #     'USER': 'myuser',
+    #     'PASSWORD': 'cQmyg1ysdss!',
+    #     'HOST': 'mydbforfancynumber.mysql.database.azure.com',
+    #     'PORT': '3306',
+    # }
+
+
+
+    #  'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mydb',
+    #     'USER': 'root',
+    #     'PASSWORD': '123456',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
+
+
+     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': '3306',
+        'NAME': 'mydb',  # Replace with your database name
+        'USER': 'myuser',       # Replace with your MySQL username
+        'PASSWORD': 'cQmyg1ysdss!',   # Replace with your MySQL password
+        'HOST': 'mydbforfancynumber.mysql.database.azure.com',  # Azure MySQL server hostname
+        'PORT': '3306', 
+        # 'OPTIONS': {
+        #     'ssl': {
+        #         'ca': 'DigiCertGlobalRootCA.crt.pem ',     # Path to your CA certificate file
+        #     },
+        # },
     }
+
+
+    
 }
 
 # Password validation
@@ -125,8 +164,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Serve static files using WhiteNoise
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type
