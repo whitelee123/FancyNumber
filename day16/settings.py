@@ -81,35 +81,6 @@ WSGI_APPLICATION = 'day16.wsgi.application'
 # }
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': os.environ.get('DB_NAME'),
-    #     'USER': os.environ.get('DB_USER'),
-    #     'PASSWORD': os.environ.get('DB_PASSWORD'),
-    #     'HOST': os.environ.get('DB_HOST'),
-    #     'PORT': '3306',
-    # }
-
-    #  'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'mydb',
-    #     'USER': 'myuser',
-    #     'PASSWORD': 'cQmyg1ysdss!',
-    #     'HOST': 'mydbforfancynumber.mysql.database.azure.com',
-    #     'PORT': '3306',
-    # }
-
-
-
-    #  'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'mydb',
-    #     'USER': 'root',
-    #     'PASSWORD': '123456',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
-
 
      'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -118,19 +89,8 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        # 'NAME': 'mydb',  # Replace with your database name
-        # 'USER': 'myuser',       # Replace with your MySQL username
-        # 'PASSWORD': 'cQmyg1ysdss!',   # Replace with your MySQL password
-        # 'HOST': 'mydbforfancynumber.mysql.database.azure.com',  # Azure MySQL server hostname
-        # 'PORT': '3306', 
-        # 'OPTIONS': {
-        #     'ssl': {
-        #         'ca': 'DigiCertGlobalRootCA.crt.pem ',     # Path to your CA certificate file
-        #     },
-        # },
+
     }
-
-
     
 }
 
