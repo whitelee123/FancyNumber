@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hkrj5qe6)4-oe)g&+s-_)90r8$$fk_*a1w33=2wikt4!^4_h6c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','testforfancynum.azurewebsites.net']
 
@@ -113,11 +113,16 @@ DATABASES = {
 
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',  # Replace with your database name
-        'USER': 'myuser',       # Replace with your MySQL username
-        'PASSWORD': 'cQmyg1ysdss!',   # Replace with your MySQL password
-        'HOST': 'mydbforfancynumber.mysql.database.azure.com',  # Azure MySQL server hostname
-        'PORT': '3306', 
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': '3306',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        # 'NAME': 'mydb',  # Replace with your database name
+        # 'USER': 'myuser',       # Replace with your MySQL username
+        # 'PASSWORD': 'cQmyg1ysdss!',   # Replace with your MySQL password
+        # 'HOST': 'mydbforfancynumber.mysql.database.azure.com',  # Azure MySQL server hostname
+        # 'PORT': '3306', 
         # 'OPTIONS': {
         #     'ssl': {
         #         'ca': 'DigiCertGlobalRootCA.crt.pem ',     # Path to your CA certificate file
